@@ -21,7 +21,9 @@ public class Arboles {
      */
     
     public static Node makeTree(String root, HashSet mst_edges){
-        Iterator<Edge> it = mst_edges.iterator();
+        //Funcion para crear un arbol de acuerdo a la raiz dada. Hace falta arreglar la recursion
+        
+        Iterator<Edge> it = mst_edges.iterator(); //Iterador para recorrer el mst
         Node tnode = null;
         Edge temp;
         
@@ -40,7 +42,7 @@ public class Arboles {
         Scanner key = new Scanner(System.in);
         String node = "abcdefghij";
         String raiz;
-        HashSet<Edge> mst_edges;
+        HashSet<Edge> mst_edges; //Conjunto de aristas del mst resultante
         Node head;
         
         int n;
