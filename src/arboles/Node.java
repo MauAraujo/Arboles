@@ -17,14 +17,21 @@ public class Node {
     
     public Node(String valor, Node referencia, double weight){
         this.valor = valor;
-        this.referencia_izq = referencia;
-        this.referencia_der = null;
+        this.referencia_izq = null;
+        this.referencia_der = referencia;
         this.weight = weight;
     }
-    
+        
     public Node(Node referencia_izq, Node referencia_der){
         this.referencia_izq = referencia_izq;
         this.referencia_der = referencia_der;
         this.valor = null;
+    }
+    
+    public Node(String valor){
+        this.valor=valor;
+        this.referencia_izq = null;
+        this.referencia_der = null;
+        this.weight = 0;
     }
 }
