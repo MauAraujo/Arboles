@@ -9,7 +9,6 @@ public class SubList {
     ArrayList<String> recorrido = new ArrayList();
     ArrayList<Node> busqueda = new ArrayList();
     
-    
     public SubList(String valor){
         head = new Node(valor);
     }
@@ -24,7 +23,22 @@ public class SubList {
         Node nuevo = new Node(valor);
         //si el nodo tiene ya uno o mas hijos, entonces se le va a hacer otro hijo
         if (origin.referencia_der != null){
+
+            insertAt(origin.referencia_der,nuevo);
+        }
+        //si no tiene hijos, se le va a hacer el primer hijo
+        else{
+           origin.referencia_der = new Node(nuevo,null);
+           num++;
+        }
+    }
+    
+    public void insertAt(Node origin, Node nuevo){
+         if (origin.referencia_der != null){
+            insertAt(origin.referencia_der,nuevo);
+
             insertAt(origin.referencia_der.referencia_izq.valor,valor);
+
         }
         //si no tiene hijos, se le va a hacer el primer hijo
         else{
@@ -96,7 +110,15 @@ public class SubList {
         
         return;
     }
+
+    public boolean contains(String nodo){
+        recorrer(head);
+        if(recorrido.contains(nodo))
+            return true;
+        return false;
+    }
     
+
     public String toString(){
         String result = "";
         
@@ -115,8 +137,11 @@ public class SubList {
         test.insertAt(test.head.valor,"b");
         test.insertAt("b", "c");
         test.insertAt(test.head.valor, "d");
-        System.out.println(test);
+
+        System.out.println((test.buscar(test.head,"a")).valor);
+
         System.out.println((test.buscar(test.head,"a")).referencia_der);
+
     }
     
 }

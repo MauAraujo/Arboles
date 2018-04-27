@@ -9,4 +9,9 @@ class Edge{
         this.dest = dest;
         this.weight = weight;
     }
+    
+    public Edge getReverse(){
+       return (new Edge(this.dest,this.src,this.weight));
+        
+    }
 }
