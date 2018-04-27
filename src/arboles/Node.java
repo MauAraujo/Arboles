@@ -14,17 +14,37 @@ public class Node {
     Node referencia_izq;
     Node referencia_der;
     double weight;
+    boolean hasValor;
+    
     
     public Node(String valor, Node referencia, double weight){
         this.valor = valor;
-        this.referencia_izq = referencia;
-        this.referencia_der = null;
+        this.referencia_izq = null;
+        this.referencia_der = referencia;
         this.weight = weight;
+        this.hasValor = true;
     }
     
+    //Usado para Referencias variantes en sublistas
     public Node(Node referencia_izq, Node referencia_der){
         this.referencia_izq = referencia_izq;
         this.referencia_der = referencia_der;
         this.valor = null;
+        this.hasValor = false;
+    }
+    
+    //Usado para nodo comun y para arboles binarios
+    public Node(String valor){
+        this.valor=valor;
+        this.referencia_izq = null;
+        this.referencia_der = null;
+        this.weight = 0;
+        this.hasValor = true;
+    }
+    public String toString(){
+        if(this.hasValor)
+            return this.valor;
+        else
+            return "izq: " + this.referencia_izq + " der: " + this.referencia_der;
     }
 }

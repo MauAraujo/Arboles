@@ -37,12 +37,16 @@ public class Arboles {
         }
         return tnode;
     }
+    
+    
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner key = new Scanner(System.in);
         String node = "abcdefghij";
         String raiz;
         HashSet<Edge> mst_edges; //Conjunto de aristas del mst resultante
+        Edge[] aristas;
+        int n_aristas;
         Node head;
         
         int n;
@@ -61,10 +65,21 @@ public class Arboles {
       
         Kruskall main = new Kruskall(grafo, nodos);
         mst_edges = main.getMST();
+        n_aristas = mst_edges.size();
+        aristas = mst_edges.toArray(new Edge[n_aristas]);
         
         System.out.println("Elija el nodo raiz del arbol m-ario: ");
         raiz = key.next();
-        head = makeTree(raiz, mst_edges);
+        
+        // 0 10 -1 30 100 10 0 50 -1 -1 -1 50 0 20 10 30 -1 20 0 60 100 -1 10 60 0
+      
+        //ARBOL A PARTIR DE CONJUNTO DE ARISTAS (PARES ORDENADOS)
+        Tree arbolito = new Tree (raiz, aristas);
+        System.out.println(arbolito);
+        
+        BTree binario = new BTree (arbolito);
+        
+        System.out.println(binario);
     }
     
 }
