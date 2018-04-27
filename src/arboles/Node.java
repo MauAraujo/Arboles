@@ -14,18 +14,21 @@ public class Node {
     Node referencia_izq;
     Node referencia_der;
     double weight;
+    boolean hasValor;
     
     public Node(String valor, Node referencia, double weight){
         this.valor = valor;
         this.referencia_izq = null;
         this.referencia_der = referencia;
         this.weight = weight;
+        this.hasValor = true;
     }
         
     public Node(Node referencia_izq, Node referencia_der){
         this.referencia_izq = referencia_izq;
         this.referencia_der = referencia_der;
         this.valor = null;
+        this.hasValor = false;
     }
     
     public Node(String valor){
@@ -33,5 +36,6 @@ public class Node {
         this.referencia_izq = null;
         this.referencia_der = null;
         this.weight = 0;
+        this.hasValor = true;
     }
 }
