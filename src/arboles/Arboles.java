@@ -20,23 +20,6 @@ public class Arboles {
      * @param args the command line arguments
      */
     
-    public static Node makeTree(String root, HashSet mst_edges){
-        //Funcion para crear un arbol de acuerdo a la raiz dada. Hace falta arreglar la recursion
-        
-        Iterator<Edge> it = mst_edges.iterator(); //Iterador para recorrer el mst
-        Node tnode = null;
-        Edge temp;
-        
-        while(it.hasNext()){
-            temp = it.next();
-            if(temp.src.equals(root))
-                tnode = new Node(root, makeTree(temp.dest,mst_edges), temp.weight);
-            
-            else if(temp.dest.equals(root))
-                tnode = new Node(root, makeTree(temp.src,mst_edges), temp.weight);
-        }
-        return tnode;
-    }
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner key = new Scanner(System.in);
@@ -45,7 +28,7 @@ public class Arboles {
         HashSet<Edge> mst_edges; //Conjunto de aristas del mst resultante
         Edge[] aristas;
         int n_aristas;
-        Node head;
+        Node tempNode;
         
         int n;
         double[][] grafo;
@@ -68,8 +51,20 @@ public class Arboles {
         
         System.out.println("Elija el nodo raiz del arbol m-ario: ");
         raiz = key.next();
+        SubList arbolM = new SubList(raiz);
         
-        head = makeTree(raiz, mst_edges);
+        //Node head = new Node(null);
+        //head.setId(raiz);
+        
+        for(Edge each : aristas){
+            if(each.src.equals(raiz)){
+                arbolM.insertAt(raiz, each.dest);
+            }
+            
+            else if(each.dest.equals(raiz)){
+                arbolM.insertAt(raiz, each.src);
+            }
+        }                
     }
     
 }
