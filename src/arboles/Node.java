@@ -38,4 +38,10 @@ public class Node {
         this.weight = 0;
         this.hasValor = true;
     }
+    public String toString(){
+        if(this.hasValor)
+            return this.valor;
+        else
+            return "izq: " + this.referencia_izq + " der: " + this.referencia_der;
+    }
 }
